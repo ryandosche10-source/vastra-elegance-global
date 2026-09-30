@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -11,6 +12,12 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "@/components/ui/sonner";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { I18nProvider } from "@/lib/i18n";
+import { RegionProvider } from "@/lib/region";
+import { CartProvider } from "@/lib/cart";
 
 function NotFoundComponent() {
   return (
