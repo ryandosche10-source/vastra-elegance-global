@@ -58,7 +58,7 @@ function Home() {
               className="size-full object-cover object-right"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
               <Reveal className="max-w-xl" variant="left">
