@@ -13,11 +13,11 @@ import { products } from "@/lib/products";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-type Search = { gender?: "women" | "men" };
+type Search = { gender?: "women" | "men" | undefined };
 
 export const Route = createFileRoute("/collection")({
   validateSearch: (search: Record<string, unknown>): Search => ({
-    gender: search.gender === "women" || search.gender === "men" ? search.gender : undefined,
+    gender: search["gender"] === "women" || search["gender"] === "men" ? search["gender"] : undefined,
   }),
   head: () => ({
     meta: [
