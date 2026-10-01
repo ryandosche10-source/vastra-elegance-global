@@ -115,7 +115,7 @@ export function quoteShipping(args: {
 }): ShippingQuote {
   const { regionCode, methodId, weightKg, subtotalInr, postcode } = args;
   const methods = shippingTable[regionCode];
-  const method = methods.find((m) => m.id === methodId) ?? methods[0];
+  const method = methods.find((m) => m.id === methodId) ?? methods[0]!;
   const billableKg = Math.max(0, Math.ceil(weightKg) - 1);
   let costInr = method.baseInr + billableKg * method.perKgInr;
 

@@ -42,7 +42,7 @@ function ProductPage() {
   const { t, lang } = useI18n();
   const { format } = useRegion();
   const { add } = useCart();
-  const [size, setSize] = useState(product.sizes[0]);
+  const [size, setSize] = useState(product.sizes[0] ?? "Free size");
 
   const related = products.filter((p) => p.id !== product.id).slice(0, 3);
 
