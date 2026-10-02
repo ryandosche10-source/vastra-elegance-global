@@ -123,7 +123,7 @@ function Wholesale() {
             <div className="space-y-1"><Label className="eyebrow" htmlFor="wn">{t("checkout.name")}</Label><Input id="wn" required className="rounded-none" /></div>
             <div className="space-y-1"><Label className="eyebrow" htmlFor="we">{t("checkout.email")}</Label><Input id="we" type="email" required className="rounded-none" /></div>
             <div className="space-y-1"><Label className="eyebrow" htmlFor="wp">{t("ws.phone")}</Label><Input id="wp" type="tel" className="rounded-none" /></div>
-            <div className="space-y-1"><Label className="eyebrow" htmlFor="wc">{t("ws.country")}</Label><Input id="wc" defaultValue={region.name} className="rounded-none" /></div>
+            <div className="space-y-1"><Label className="eyebrow" htmlFor="wc">{t("ws.country")}</Label><Input id="wc" defaultValue={region.country} className="rounded-none" /></div>
             <div className="space-y-1"><Label className="eyebrow" htmlFor="wt">{t("ws.notes")}</Label><Textarea id="wt" rows={3} className="rounded-none" /></div>
             <Button type="submit" variant="ink" size="xl" className="w-full" disabled={!ok}>{t("ws.submit")}</Button>
           </form>
