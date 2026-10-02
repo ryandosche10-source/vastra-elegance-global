@@ -13,7 +13,7 @@ import { tierFor, WHOLESALE_MIN_PIECES, wholesaleTiers, wholesaleUnit } from "@/
 
 export const Route = createFileRoute("/wholesale")({
   validateSearch: (s: Record<string, unknown>): { product?: string } =>
-    typeof s.product === "string" ? { product: s.product } : {},
+    typeof s["product"] === "string" ? { product: s["product"] } : {},
   head: () => ({
     meta: [
       { title: "Wholesale — Indian Vastra" },

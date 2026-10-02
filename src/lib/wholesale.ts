@@ -17,4 +17,4 @@ export function wholesaleUnit(retailInr: number, discount: number) {
   return Math.round(retailInr * (1 - discount));
 }
 
-export const bestWholesaleDiscount = wholesaleTiers[wholesaleTiers.length - 1].discount;
+export const bestWholesaleDiscount = 0.4;
