@@ -10,6 +10,7 @@ import { useI18n } from "@/lib/i18n";
 import { useRegion } from "@/lib/region";
 import { useCart } from "@/lib/cart";
 import { cn } from "@/lib/utils";
+import { bestWholesaleDiscount, wholesaleTiers, wholesaleUnit } from "@/lib/wholesale";
 
 export const Route = createFileRoute("/product/$productId")({
   loader: ({ params }) => {
@@ -72,7 +73,32 @@ function ProductPage() {
             {lang === "ta" ? product.nameTa : product.name}
           </h1>
           <div className="rule-gold mt-6 max-w-24" />
-          <p className="mt-6 text-2xl font-light">{format(product.priceInr)}</p>
+          <div className="mt-6 grid grid-cols-2 gap-4 border border-border p-4">
+            <div>
+              <p className="eyebrow">{t("ws.retail")}</p>
+              <p className="mt-1 text-2xl font-light">{format(product.priceInr)}</p>
+            </div>
+            <div className="border-l border-border pl-4">
+              <p className="eyebrow text-gold">{t("ws.from")}</p>
+              <p className="mt-1 text-2xl font-light">
+                {format(wholesaleUnit(product.priceInr, bestWholesaleDiscount))}
+              </p>
+            </div>
+            <div className="col-span-2 border-t border-border pt-3">
+              <p className="eyebrow">{t("ws.tiers")}</p>
+              <ul className="mt-2 grid grid-cols-3 gap-2 text-xs">
+                {wholesaleTiers.map((tier) => (
+                  <li key={tier.min} className="bg-secondary/60 p-2 text-center">
+                    <span className="block font-medium">{tier.min}+ {t("ws.pieces")}</span>
+                    <span className="block text-muted-foreground">
+                      {format(wholesaleUnit(product.priceInr, tier.discount))} · {Math.round(tier.discount * 100)}% {t("ws.off")}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 text-xs text-muted-foreground">{t("ws.min")}</p>
+            </div>
+          </div>
 
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
             {lang === "ta" ? product.descriptionTa : product.description}
@@ -110,6 +136,9 @@ function ProductPage() {
             }}
           >
             {t("product.addToCart")}
+          </Button>
+          <Button asChild variant="outline" size="xl" className="mt-3 w-full sm:ml-3 sm:w-auto">
+            <Link to="/wholesale" search={{ product: product.id }}>{t("ws.request")}</Link>
           </Button>
 
           <dl className="mt-10 space-y-3 border-t border-border pt-6 text-sm">
